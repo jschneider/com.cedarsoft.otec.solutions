@@ -21,7 +21,7 @@ public class BackdateHeaderFactoryTest {
 
     Invoice invoice = invoiceBuilder.build();
     assertEquals( 2, invoice.getLineItems().size() );
-    assertEquals( 2 * 101 + 3 * 301, invoice.getSum().getCents() );
+    assertEquals( 2 * 101 + 3 * 301, invoice.getNetSum().getCents() );
 
 
     //Check that the date is old

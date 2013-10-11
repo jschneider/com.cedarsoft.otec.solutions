@@ -25,7 +25,7 @@ public class Invoice {
     return Collections.unmodifiableList( lineItems );
   }
 
-  public Money getSum() {
+  public Money getNetSum() {
     Money sum = new Money( 0 );
 
     for ( LineItem lineItem : lineItems ) {
