@@ -5,7 +5,7 @@ package com.cedarsoft.otec;
  *
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Journal extends HasValueParent {
+public class Journal extends AbstractHasValueParent {
   private final String description;
 
   public Journal( String description ) {
@@ -18,5 +18,10 @@ public class Journal extends HasValueParent {
 
   public void addChild( HasValue hasValue ) {
     this.children.add( hasValue );
+  }
+
+  @Override
+  public void accept( HasValueVisitor visitor ) {
+    visitor.visit( this );
   }
 }

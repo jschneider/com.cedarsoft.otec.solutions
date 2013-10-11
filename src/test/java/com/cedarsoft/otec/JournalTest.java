@@ -35,5 +35,18 @@ public class JournalTest {
 
 
     assertThat( journal.getValue().asDouble() ).isEqualTo( 1684.91 );
+
+    prettyPrint( journal );
+
+
+    assertThat( new InvoiceFinder(articleA).findInvoices( journal ) ).hasSize( 1 ).contains( journal.getChildren().get( 0 ) );
+    assertThat( new InvoiceFinder(articleB).findInvoices( journal ) ).hasSize( 2 ).contains( journal.getChildren().toArray() );
+
+    //Only search a sub tree
+    assertThat( new InvoiceFinder( articleB ).findInvoices( journal.getChildren().get( 0 ) ) ).hasSize( 1 ).contains( journal.getChildren().get( 0 ) );
+  }
+
+  private void prettyPrint( Journal journal ) {
+    journal.accept( new PrettyPrinter() );
   }
 }

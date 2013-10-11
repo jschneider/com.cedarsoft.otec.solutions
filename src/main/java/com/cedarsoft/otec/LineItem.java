@@ -1,9 +1,12 @@
 package com.cedarsoft.otec;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class LineItem implements HasValue{
+public class LineItem implements HasValueParent {
   private final int amount;
   private final Article article;
 
@@ -27,5 +30,15 @@ public class LineItem implements HasValue{
 
   public Money getSum() {
     return getValue();
+  }
+
+  @Override
+  public List<HasValue> getChildren() {
+    return Collections.<HasValue>singletonList( article );
+  }
+
+  @Override
+  public void accept( HasValueVisitor visitor ) {
+    visitor.visit( this );
   }
 }

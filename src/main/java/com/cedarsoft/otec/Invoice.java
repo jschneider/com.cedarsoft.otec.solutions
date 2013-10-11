@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Invoice extends HasValueParent {
+public class Invoice extends AbstractHasValueParent {
   private final InvoiceHeader header;
   private final SalesTaxCalculator salesTaxCalculator;
 
@@ -37,5 +37,10 @@ public class Invoice extends HasValueParent {
 
   public Money getGrossSum() {
     return getNetSum().add( getSalesTax() );
+  }
+
+  @Override
+  public void accept( HasValueVisitor visitor ) {
+    visitor.visit( this );
   }
 }

@@ -1,5 +1,7 @@
 package com.cedarsoft.otec;
 
+import java.text.NumberFormat;
+
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
@@ -28,5 +30,14 @@ public class Money {
 
   public Money multiply( double factor ) {
     return new Money( Math.round( getCents() * factor ) );
+  }
+
+  public String format() {
+    return NumberFormat.getCurrencyInstance().format( getCents() / 100.0 );
+  }
+
+  @Override
+  public String toString() {
+    return format();
   }
 }

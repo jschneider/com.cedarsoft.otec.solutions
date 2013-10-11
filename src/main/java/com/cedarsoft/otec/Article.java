@@ -35,4 +35,9 @@ public class Article implements HasValue {
   public Money getValue() {
     return price;
   }
+
+  @Override
+  public void accept( HasValueVisitor visitor ) {
+    visitor.visit( this );
+  }
 }
