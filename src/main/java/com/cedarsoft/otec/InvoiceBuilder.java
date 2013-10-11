@@ -13,8 +13,9 @@ public class InvoiceBuilder {
 
   private SalesTaxCalculator salesTaxCalculator;
 
-  public void addLineItem( LineItem lineItem ) {
+  public InvoiceBuilder addLineItem( LineItem lineItem ) {
     this.lineItems.add( lineItem );
+    return this;
   }
 
   public InvoiceHeader getHeader() {
@@ -25,12 +26,14 @@ public class InvoiceBuilder {
     return salesTaxCalculator;
   }
 
-  public void setSalesTaxCalculator( SalesTaxCalculator salesTaxCalculator ) {
+  public InvoiceBuilder setSalesTaxCalculator( SalesTaxCalculator salesTaxCalculator ) {
     this.salesTaxCalculator = salesTaxCalculator;
+    return this;
   }
 
-  public void setHeader( InvoiceHeader header ) {
+  public InvoiceBuilder setHeader( InvoiceHeader header ) {
     this.header = header;
+    return this;
   }
 
   public Invoice build() {

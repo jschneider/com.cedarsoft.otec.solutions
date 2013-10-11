@@ -17,11 +17,11 @@ public class ReducedSalesTaxCalculator implements SalesTaxCalculator {
     Money netNormal = new Money( 0 );
     Money netReduced = new Money( 0 );
 
-    for ( LineItem lineItem : invoice.getLineItems() ) {
-      if ( isReduced( lineItem ) ) {
-        netReduced = netReduced.add( lineItem.getSum() );
+    for ( HasValue lineItem : invoice.getLineItems() ) {
+      if ( isReduced( ( LineItem ) lineItem ) ) {
+        netReduced = netReduced.add( lineItem.getValue() );
       }else {
-        netNormal = netNormal.add( lineItem.getSum() );
+        netNormal = netNormal.add( lineItem.getValue() );
       }
     }
 
@@ -30,6 +30,6 @@ public class ReducedSalesTaxCalculator implements SalesTaxCalculator {
   }
 
   protected boolean isReduced( LineItem lineItem ) {
-    return lineItem.getDescription().contains( "reduced" );
+    return lineItem.getArticle().getDescription().contains( "reduced" );
   }
 }

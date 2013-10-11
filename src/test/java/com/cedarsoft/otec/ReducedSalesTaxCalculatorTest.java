@@ -12,7 +12,7 @@ public class ReducedSalesTaxCalculatorTest {
   @Test
   public void testName() throws Exception {
     InvoiceHeader header = new InvoiceHeader( 123, 33, new Receiver( "a", "b" ) );
-    Invoice invoice = new Invoice( header, ImmutableList.of( new LineItem( 1, "asdf", new Money( 300 ) ) ), new ReducedSalesTaxCalculator( 0.19, 0.07 ) );
+    Invoice invoice = new Invoice( header, ImmutableList.of( new LineItem( 1, new Article( "asdf", new Money( 300 ) ) ) ), new ReducedSalesTaxCalculator( 0.19, 0.07 ) );
 
     assertEquals( 3.00 * 0.19, invoice.getSalesTax().asDouble(), 0.0001 );
   }
@@ -22,8 +22,8 @@ public class ReducedSalesTaxCalculatorTest {
     InvoiceHeader header = new InvoiceHeader( 123, 33, new Receiver( "a", "b" ) );
     Invoice invoice = new Invoice( header,
                                    ImmutableList.of(
-                                     new LineItem( 1, "asdf", new Money( 300 ) )
-                                     , new LineItem( 1, "asdf reduced", new Money( 500 ) )
+                                     new LineItem( 1, new Article( "asdf", new Money( 300 ) ) )
+                                     , new LineItem( 1, new Article( "asdf reduced", new Money( 500 ) ) )
                                    ),
                                    new ReducedSalesTaxCalculator( 0.19, 0.07 ) );
 

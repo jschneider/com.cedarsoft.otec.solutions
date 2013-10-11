@@ -10,6 +10,6 @@ import static org.junit.Assert.assertEquals;
 public class LineItemTest {
   @Test
   public void testSum() throws Exception {
-    assertEquals( 202, new LineItem( 2, "Item1", new Money( 101 ) ).getSum().getCents() );
+    assertEquals( 202, new LineItem( 2, new Article( "Item1", new Money( 101 ) ) ).getSum().getCents() );
   }
 }

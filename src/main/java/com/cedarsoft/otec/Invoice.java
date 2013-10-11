@@ -1,21 +1,18 @@
 package com.cedarsoft.otec;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Invoice {
-  private final List<LineItem> lineItems;
+public class Invoice extends HasValueParent {
   private final InvoiceHeader header;
   private final SalesTaxCalculator salesTaxCalculator;
 
   public Invoice( InvoiceHeader header, List<LineItem> lineItems, SalesTaxCalculator salesTaxCalculator ) {
+    super( lineItems );
     this.header = header;
     this.salesTaxCalculator = salesTaxCalculator;
-    this.lineItems = new ArrayList<LineItem>( lineItems );
   }
 
   public SalesTaxCalculator getSalesTaxCalculator() {
@@ -26,17 +23,12 @@ public class Invoice {
     return header;
   }
 
-  public List<LineItem> getLineItems() {
-    return Collections.unmodifiableList( lineItems );
+  public List<HasValue> getLineItems() {
+    return getChildren();
   }
 
   public Money getNetSum() {
-    Money sum = new Money( 0 );
-
-    for ( LineItem lineItem : lineItems ) {
-      sum = sum.add( lineItem.getSum() );
-    }
-    return sum;
+    return getValue();
   }
 
   public Money getSalesTax() {

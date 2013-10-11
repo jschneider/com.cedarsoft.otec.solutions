@@ -19,8 +19,8 @@ public class BackdateHeaderFactoryTest {
     
     invoiceBuilder.setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.19 ) );
     
-    invoiceBuilder.addLineItem( new LineItem( 2, "Item1", new Money( 101 ) ) );
-    invoiceBuilder.addLineItem( new LineItem( 3, "Item2", new Money( 301 ) ) );
+    invoiceBuilder.addLineItem( new LineItem( 2, new Article( "Item1", new Money( 101 ) ) ) );
+    invoiceBuilder.addLineItem( new LineItem( 3, new Article( "Item2", new Money( 301 ) ) ) );
 
     Invoice invoice = invoiceBuilder.build();
     assertEquals( 2, invoice.getLineItems().size() );
