@@ -11,12 +11,22 @@ public class InvoiceBuilder {
 
   private InvoiceHeader header;
 
+  private SalesTaxCalculator salesTaxCalculator;
+
   public void addLineItem( LineItem lineItem ) {
     this.lineItems.add( lineItem );
   }
 
   public InvoiceHeader getHeader() {
     return header;
+  }
+  
+  public SalesTaxCalculator getSalesTaxCalculator() {
+    return salesTaxCalculator;
+  }
+
+  public void setSalesTaxCalculator( SalesTaxCalculator salesTaxCalculator ) {
+    this.salesTaxCalculator = salesTaxCalculator;
   }
 
   public void setHeader( InvoiceHeader header ) {
@@ -28,6 +38,10 @@ public class InvoiceBuilder {
       throw new IllegalStateException( "No header set" );
     }
 
-    return new Invoice( header, lineItems );
+    if ( salesTaxCalculator == null ) {
+      throw new IllegalStateException( "No sales tax calculator set" );
+    }
+
+    return new Invoice( header, lineItems, salesTaxCalculator );
   }
 }

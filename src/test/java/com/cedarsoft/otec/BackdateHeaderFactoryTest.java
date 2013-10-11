@@ -16,6 +16,9 @@ public class BackdateHeaderFactoryTest {
 
     InvoiceBuilder invoiceBuilder = new InvoiceBuilder( );
     invoiceBuilder.setHeader( headerFactory.createHeader( new Receiver( "daName", "daAddress" ) ) );
+    
+    invoiceBuilder.setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.19 ) );
+    
     invoiceBuilder.addLineItem( new LineItem( 2, "Item1", new Money( 101 ) ) );
     invoiceBuilder.addLineItem( new LineItem( 3, "Item2", new Money( 301 ) ) );
 

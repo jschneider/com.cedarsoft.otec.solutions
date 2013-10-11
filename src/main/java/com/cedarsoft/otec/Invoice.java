@@ -9,12 +9,17 @@ import java.util.List;
  */
 public class Invoice {
   private final List<LineItem> lineItems;
+  private final InvoiceHeader header;
+  private final SalesTaxCalculator salesTaxCalculator;
 
-  private final  InvoiceHeader header;
-
-  public Invoice( InvoiceHeader header, List<LineItem> lineItems ) {
+  public Invoice( InvoiceHeader header, List<LineItem> lineItems, SalesTaxCalculator salesTaxCalculator ) {
     this.header = header;
-    this.lineItems = new ArrayList<LineItem>(lineItems);
+    this.salesTaxCalculator = salesTaxCalculator;
+    this.lineItems = new ArrayList<LineItem>( lineItems );
+  }
+
+  public SalesTaxCalculator getSalesTaxCalculator() {
+    return salesTaxCalculator;
   }
 
   public InvoiceHeader getHeader() {
@@ -32,5 +37,13 @@ public class Invoice {
       sum = sum.add( lineItem.getSum() );
     }
     return sum;
+  }
+
+  public Money getSalesTax() {
+    return salesTaxCalculator.calculate( this );
+  }
+
+  public Money getGrossSum() {
+    return getNetSum().add( getSalesTax() );
   }
 }
