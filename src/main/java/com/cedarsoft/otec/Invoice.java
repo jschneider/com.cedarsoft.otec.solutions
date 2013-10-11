@@ -10,8 +10,15 @@ import java.util.List;
 public class Invoice {
   private final List<LineItem> lineItems;
 
-  public Invoice(List<LineItem> lineItems) {
+  private final  InvoiceHeader header;
+
+  public Invoice( InvoiceHeader header, List<LineItem> lineItems ) {
+    this.header = header;
     this.lineItems = new ArrayList<LineItem>(lineItems);
+  }
+
+  public InvoiceHeader getHeader() {
+    return header;
   }
 
   public List<LineItem> getLineItems() {
