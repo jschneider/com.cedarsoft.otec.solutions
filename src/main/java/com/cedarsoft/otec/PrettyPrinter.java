@@ -32,7 +32,7 @@ public class PrettyPrinter implements HasValueVisitor {
 
   @Override
   public void visit( LineItem lineItem ) {
-    System.out.println( indent() + lineItem.getAmount() + " " + lineItem.getArticle().getDescription() + " à " + lineItem.getArticle().getPrice().format() );
+    System.out.println( indent() + lineItem.getAmount() + " " + lineItem.getArticle().getDescription() + " à " + lineItem.getArticle().getValue().format() );
   }
 
   @Override

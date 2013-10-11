@@ -10,9 +10,9 @@ import static org.fest.assertions.Assertions.assertThat;
 public class JournalTest {
   @Test
   public void testIt() throws Exception {
-    Article articleA = new Article( "Artikel A", new Money( 507 ) );
-    Article articleB = new Article( "Artikel B", new Money( 407 ) );
-    Article articleC = new Article( "Artikel C", new Money( 307 ) );
+    Article articleA = new DefaultArticle( "Artikel A", new Money( 507 ) );
+    Article articleB = new DefaultArticle( "Artikel B", new Money( 407 ) );
+    Article articleC = new DefaultArticle( "Artikel C", new Money( 307 ) );
 
 
     Journal journal = new Journal( "daJournal" );

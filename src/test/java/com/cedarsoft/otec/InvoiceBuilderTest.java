@@ -17,8 +17,8 @@ public class InvoiceBuilderTest {
     Receiver receiver = new Receiver( "daname", "daAddress" );
     invoiceBuilder.setHeader( factory.createHeader( receiver ) );
     
-    invoiceBuilder.addLineItem( new LineItem( 2, new Article( "Item1", new Money( 101 ) ) ) );
-    invoiceBuilder.addLineItem( new LineItem( 3, new Article( "Item2 reduced", new Money( 301 ) ) ) );
+    invoiceBuilder.addLineItem( new LineItem( 2, new DefaultArticle( "Item1", new Money( 101 ) ) ) );
+    invoiceBuilder.addLineItem( new LineItem( 3, new DefaultArticle( "Item2 reduced", new Money( 301 ) ) ) );
 
     {
       invoiceBuilder.setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.10 ) );

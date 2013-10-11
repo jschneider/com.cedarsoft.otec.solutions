@@ -12,7 +12,7 @@ public class FlatSalesTaxCalculatorTest {
   @Test
   public void testName() throws Exception {
     InvoiceHeader header = new InvoiceHeader( 123, 33, new Receiver( "a", "b" ) );
-    Invoice invoice = new Invoice( header, ImmutableList.of( new LineItem( 1, new Article( "asdf", new Money( 300 ) ) ) ), new FlatSalesTaxCalculator( 0.19 ) );
+    Invoice invoice = new Invoice( header, ImmutableList.of( new LineItem( 1, new DefaultArticle( "asdf", new Money( 300 ) ) ) ), new FlatSalesTaxCalculator( 0.19 ) );
 
     assertEquals( 3.00 * 0.19, invoice.getSalesTax().asDouble(), 0.0001 );
   }
