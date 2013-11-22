@@ -10,8 +10,11 @@ import static org.junit.Assert.assertEquals;
 public class InvoiceBuilderTest {
   @Test
   public void testInvoiceBuilder() throws Exception {
-    InvoiceBuilder invoiceBuilder = new InvoiceBuilder( new DefaultInvoiceHeaderFactory() );
-    invoiceBuilder.setReceiver( new Receiver( "daname", "daAddress" ) );
+    InvoiceHeaderFactory factory = new DefaultInvoiceHeaderFactory();
+
+    InvoiceBuilder invoiceBuilder = new InvoiceBuilder();
+    Receiver receiver = new Receiver( "daname", "daAddress" );
+    invoiceBuilder.setHeader( factory.createHeader( receiver ) );
     invoiceBuilder.addLineItem( new LineItem( 2, "Item1", new Money( 101 ) ) );
     invoiceBuilder.addLineItem( new LineItem( 3, "Item2", new Money( 301 ) ) );
 

@@ -14,9 +14,8 @@ public class BackdateHeaderFactoryTest {
   public void testName() throws Exception {
     InvoiceHeaderFactory headerFactory = new BackdateInvoiceHeaderFactory();
 
-
-    InvoiceBuilder invoiceBuilder = new InvoiceBuilder( headerFactory );
-    invoiceBuilder.setReceiver( new Receiver( "daName", "daAddress" ) );
+    InvoiceBuilder invoiceBuilder = new InvoiceBuilder( );
+    invoiceBuilder.setHeader( headerFactory.createHeader( new Receiver( "daName", "daAddress" ) ) );
     invoiceBuilder.addLineItem( new LineItem( 2, "Item1", new Money( 101 ) ) );
     invoiceBuilder.addLineItem( new LineItem( 3, "Item2", new Money( 301 ) ) );
 

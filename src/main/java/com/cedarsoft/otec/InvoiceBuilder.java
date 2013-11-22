@@ -9,31 +9,25 @@ import java.util.List;
 public class InvoiceBuilder {
   private final List<LineItem> lineItems = new ArrayList<LineItem>();
 
-  private final InvoiceHeaderFactory headerFactory;
-
-  private Receiver receiver;
-
-  public InvoiceBuilder( InvoiceHeaderFactory headerFactory ) {
-    this.headerFactory = headerFactory;
-  }
+  private InvoiceHeader header;
 
   public void addLineItem( LineItem lineItem ) {
     this.lineItems.add( lineItem );
   }
 
-  public Receiver getReceiver() {
-    return receiver;
+  public InvoiceHeader getHeader() {
+    return header;
   }
 
-  public void setReceiver( Receiver receiver ) {
-    this.receiver = receiver;
+  public void setHeader( InvoiceHeader header ) {
+    this.header = header;
   }
 
   public Invoice build() {
-    if ( receiver == null ) {
-      throw new IllegalStateException( "No receiver set" );
+    if ( header == null ) {
+      throw new IllegalStateException( "No header set" );
     }
 
-    return new Invoice( headerFactory.createHeader( receiver ), lineItems );
+    return new Invoice( header, lineItems );
   }
 }
