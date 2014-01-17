@@ -1,0 +1,96 @@
+\documentclass[oneside,a4paper]{scrartcl}
+
+\input{/home/johannes/documents/cedarsoft/korrespondenz/vorlagen/tex/common.tex}
+
+
+\author{Johannes Schneider}
+
+\begin{document}
+
+
+\centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
+\vspace{.5pc}
+\centerline{\sc Objekttechnologien - Wintersemester 2013/14}
+\vspace{2pc}
+
+
+
+\section{Grundlegendes}
+
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Composite-Patterns ein 
+sehr stark vereinfachter Bug-Tracker abgebildet und in Java umgesetzt werden:
+
+
+\section{Erstellen Sie folgende Klassen/Interfaces}
+
+
+\subsection{Bug}
+Entspricht einem einfachen Bug-Eintrag in unserem Tracker. Der Einfachheit halber enthält
+der Bug einen einfache String in dem die Beschreibung (\enquote{description}) abgelegt ist.
+
+Außerdem noch das Feld \enquote{int estimate;} welches den
+geschätzen Zeitbedarf (in Stunden) für den Bug repräsentiert.
+
+
+
+\subsection{Comment}
+Diese Klasse entspricht einem (stark vereinfachten) Kommentar. Der Kommentar enthält ebenfalls
+nur einen einfachen String, welcher den Text des Kommentars repräsentiert.
+
+
+\subsection{BugTracker}
+Ein BugTracker enthält das Field \enquote{children} in welches Comments und Bugs eingetragen werden können.
+
+
+\section{Composite-Pattern}
+Wenden Sie nun das Composite Pattern an um die Hierarchie flexibler zu gestalten und die gemeinsame Funktionalität bereit zu stellen.
+
+Führen Sie dazu folgendes ein:
+
+\subsection{BugTrackerEntity (Interface)}
+Dieses Interface bietet die gemeinsame Funktionalität aller in der Hierarchie vorhandener Klassen.
+
+Dies sind folgende beiden Methoden:
+
+\begin{description}
+	\item[int getEstimation()]
+		Liefert den geschätzen Zeitbedarf für das einzelne Entity innerhalb des Bugtrackers - also ohne die Zeiten der (eventuell vorhandenen Kindern).
+		Comment und BugTracker selbst haben dabei immer einen \enquote{estimate} von \enquote{0}
+	\item[int getTotalEstimation()]		
+		Liefert den geschätzten Gesamt-Aufwand - also inklusive der Zeiten aller Kinder und Kindeskinder usw.
+\end{description}
+
+
+
+\subsection{Hierarchie}
+Die Klassen BugTracker, Bug und Comment sollen dabei in die Hierarchie aufgenommen werden.
+Dabei soll (mindestens) folgendes möglich sein:
+
+\begin{description}
+	\item[BugTracker enthält Bugs]
+	\item[Bugs enthalten weitere Bugs] Diese könnten verwandte/abhängige Bugs repräsentieren.
+	\item[Bugs enthalten Comments]		
+	\item[Comments enthalten weitere Comments]		
+\end{description}
+
+
+\subsubsection{Wichtiger Hinweis}
+Sie müssen explizit *nicht* ausschließen, dass die Hierarchie auch fachlich \enquote{unsinnig} aufgebaut wird.
+D.h. wenn der Benutzer z.B. einen BugTracker als Kind eines Comments hinzufügt, ist das ein fachliches Problem, welches nicht technisch verhindert werden muss.
+
+
+\section*{Hinweise}
+\subsection*{Unit-Tests}
+Erstellen Sie ausreichend Unit-Tests mit den entsprechenden Assertions um die Korrektheit Ihrer Lösung
+beweisen zu können.
+
+\subsection*{Composite-Pattern nutzen}
+Die Lösung ist nur dann korrekt, wenn sie mit Hilfe des Composite-Patterns umgesetzt wurde. Alternative Lösungen
+ohne das Composite-Pattern sind nicht gestattet. 
+
+\subsection*{Encoding}
+Bitte achten Sie darauf, dass Ihre Lösung im UTF-8-Encoding abgegeben wird.
+
+
+\end{document}
+
