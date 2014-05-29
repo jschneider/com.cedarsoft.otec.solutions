@@ -1,0 +1,96 @@
+\documentclass[oneside,a4paper]{scrartcl}
+
+\input{/home/johannes/documents/cedarsoft/korrespondenz/vorlagen/tex/common.tex}
+
+
+\author{Johannes Schneider}
+
+\begin{document}
+
+
+\centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
+\vspace{.5pc}
+\centerline{\sc Objekttechnologien - Sommersemester 2014}
+\vspace{2pc}
+
+
+
+\section{Grundlegendes}
+
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Observer-Patterns ein 
+sehr stark vereinfachtes Roulette-Spiel abgebildet und in Java umgesetzt werden:
+
+
+\section{Erstellen Sie folgende Klasse}
+
+
+\subsection{Roulette}
+Entspricht dem Roulette-Spiel. 
+
+Diese Klasse enthält die Methode \enquote{int nextSpin()} welche eine Spielrunde
+simmuliert. Diese Methode liefert eine Zufallszahl von 0 bis 36 (jeweils inklusive)
+zurück, welche die Zahl repräsentiert, auf der die Kugel liegen blieb.
+
+
+\section{Observer-Pattern}
+Es gibt mehrere Parteien, die sich für die Ergebnisse der einzelnene Durchgänge interessieren. 
+Diese sollen über das Resultat eines jeden Spins jeweils per Observer-Pattern informiert werden.
+
+\subsection{Spieler}
+Es gibt einen Spieler, der immer auf die Nummer 7 setzt und sich freut
+wenn diese Zahl getroffen wird. 
+Dieser Freude verleiht er mit einer Ausgabe auf \enquote{System.out} Ausdruck,
+sobald er darüber informiert wurde.
+
+\subsection{Das Haus}
+Das Haus möchte sicher stellen, dass die Roulette-Räder gleichverteilte Resultate erzielen und keine
+Zahlen gehäuft auftreten.
+
+Aus diesem Grund wird die Häufigkeit des Auftretens der einzelnen Zahlen mit protokolliert.
+
+\subsection{Programmablauf}
+Instantiieren Sie (mit Hilfe einer main-Methode oder eines JUnit-Tests) ein Roulette, registrieren
+Sie die beiden Listener \enquote{Spieler} und \enquote{Haus} und führen Sie 100 Spiel-Runden durch.
+
+Anschließend geben Sie das Ergebnis der Protokollierung des \enquote{Hauses} aus.
+Dies könnte z.B. in einer einfachen Auflistung in folgender Form erfolgen.
+
+\noindent
+0: \{Häufigkeit\}
+
+\noindent
+1: \{Häufigkeit\}
+
+\noindent
+usw.
+
+
+\section*{Hinweise}
+\subsection*{Tipp bezüglich der Datenstruktur}
+Am einfachsten scheint die Speicherung der Häufigkeit in Form eines Arrays zu sein bei
+der die erzielte Zahl dem Index des Arrays entspricht.
+Andere Datenstrukturen sind aber natürlich ebenfalls möglich.
+
+\subsection*{Hinweis: Zufallszahlen}
+Am einfachsten lassen sich Zufallszahlen mit Hilfe der statischen Methode \enquote{random} aus der
+Klasse \enquote{java.lang.Math} generieren. Diese Methode liefert einen pseudozufälligen double-Wert zwischen 
+0.0 (inklusiv) und 1.0 (exklusiv) zurück.
+
+\subsection*{Unit-Tests}
+Erstellen Sie ausreichend Unit-Tests mit den entsprechenden Assertions um die Korrektheit Ihrer Lösung
+beweisen zu können.
+
+\subsection*{Observer-Pattern nutzen}
+Die Lösung ist nur dann korrekt, wenn sie mit Hilfe des Observer-Patterns umgesetzt wurde. Alternative Lösungen
+ohne das Observer-Pattern sind nicht gestattet. 
+
+\subsection*{Encoding}
+Bitte achten Sie darauf, dass Ihre Lösung im UTF-8-Encoding abgegeben wird.
+
+\subsection*{Abgabe}
+Die Abgabe der Lösung erfolgt über das Relax. Bitte laden Sie Ihre Lösung (nur den \enquote{src}-Folder)
+in einem ZIP-File hoch.
+
+
+\end{document}
+
