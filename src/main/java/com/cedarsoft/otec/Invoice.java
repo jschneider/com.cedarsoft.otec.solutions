@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class Invoice extends HasValueParent {
+public class Invoice extends HasValueParent<LineItem> {
   private final InvoiceHeader header;
   private final SalesTaxCalculator salesTaxCalculator;
 
@@ -23,7 +23,7 @@ public class Invoice extends HasValueParent {
     return header;
   }
 
-  public List<HasValue> getLineItems() {
+  public List<? extends LineItem> getLineItems() {
     return getChildren();
   }
 

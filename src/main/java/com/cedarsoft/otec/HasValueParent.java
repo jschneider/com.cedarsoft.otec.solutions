@@ -1,22 +1,24 @@
 package com.cedarsoft.otec;
 
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
-public class HasValueParent implements HasValue {
-  protected final List<HasValue> children = new ArrayList<HasValue>();
+public class HasValueParent<T extends HasValue> implements HasValue {
+  protected final List<T> children = new ArrayList<T>();
 
   public HasValueParent() {
   }
 
-  public HasValueParent( List<? extends HasValue> children ) {
+  public HasValueParent( Collection<? extends T> children ) {
     this.children.addAll( children );
   }
 
-  public List<HasValue> getChildren() {
+  public List<? extends T> getChildren() {
     //noinspection ReturnOfCollectionOrArrayField
     return children;
   }
