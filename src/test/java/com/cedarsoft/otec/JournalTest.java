@@ -19,6 +19,13 @@ public class JournalTest {
 
     DefaultInvoiceHeaderFactory headerFactory = new DefaultInvoiceHeaderFactory();
 
+    journal.addListener(new JournalListener() {
+      @Override
+      public void childAdded(Journal source, HasValue child) {
+        System.out.println("--> added child " + child + " to " + source);
+      }
+    });
+
     journal.addChild( new InvoiceBuilder()
                         .setHeader( headerFactory.createHeader( new Receiver( "Markus Mustermann", "Dofstraße 7" ) ) )
                         .setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.19 ) )
