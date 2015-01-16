@@ -21,6 +21,9 @@ public class Journal extends AbstractHasValueParent {
 
   public void addChild( HasValue hasValue ) {
     this.children.add( hasValue );
+    for (JournalListener listener : listeners) {
+      listener.childAdded(this,hasValue);
+    }
   }
 
   @Override
