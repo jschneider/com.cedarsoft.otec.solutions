@@ -28,4 +28,8 @@ public class AddressBook {
   public int getSize() {
     return receivers.size();
   }
+
+  public boolean contains(Receiver receiver) {
+    return receivers.containsValue(receiver);
+  }
 }

@@ -38,8 +38,17 @@ public class AdressBookAutoFillTest {
                         .addLineItem( new LineItem( 7, articleB )
                         ).build() );
 
+    Receiver paulaPanther = new Receiver("Paula Panther", "Musterstraße 11");
     journal.addChild( new InvoiceBuilder()
-                        .setHeader( headerFactory.createHeader( new Receiver( "Paula Panther", "Musterstraße 11" ) ) )
+                        .setHeader( headerFactory.createHeader(paulaPanther) )
+                        .setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.19 ) )
+                        .addLineItem( new LineItem( 1, articleC ) )
+                        .addLineItem( new LineItem( 400, articleB )
+                        ).build() );
+
+    //The duplicate receiver
+    journal.addChild( new InvoiceBuilder()
+                        .setHeader( headerFactory.createHeader(paulaPanther) )
                         .setSalesTaxCalculator( new FlatSalesTaxCalculator( 0.19 ) )
                         .addLineItem( new LineItem( 1, articleC ) )
                         .addLineItem( new LineItem( 400, articleB )
@@ -67,7 +76,10 @@ public class AdressBookAutoFillTest {
     @Override
     public void visit(Invoice invoice) {
       index++;
-      addressBook.store(index, invoice.getHeader().getReceiver());
+      Receiver receiver = invoice.getHeader().getReceiver();
+      if (!addressBook.contains(receiver)) {
+        addressBook.store(index, receiver);
+      }
     }
 
     @Override
