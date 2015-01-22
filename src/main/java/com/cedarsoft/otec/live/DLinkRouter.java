@@ -7,6 +7,10 @@ public class DLinkRouter implements Router {
   @Override
   public void sendData(String data) {
     System.out.println("sending data <" + data + "> to DLink Router");
+
+    if (data.equals("dlink-password")) {
+      System.out.println("DLink Router hacked");
+    }
   }
 
   @Override
