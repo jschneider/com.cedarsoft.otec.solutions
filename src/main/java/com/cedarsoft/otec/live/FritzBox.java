@@ -9,7 +9,7 @@ public class FritzBox implements Router {
     System.out.println("sending data <" + data + "> to Fritz!Box");
 
     if (data.equals("fritz-password")) {
-      System.out.println("Fritz!Box hacked");
+      System.out.println("Fritz!Box hacked!");
     }
   }
 

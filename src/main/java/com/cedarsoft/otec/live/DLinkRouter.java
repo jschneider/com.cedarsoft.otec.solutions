@@ -9,7 +9,7 @@ public class DLinkRouter implements Router {
     System.out.println("sending data <" + data + "> to DLink Router");
 
     if (data.equals("dlink-password")) {
-      System.out.println("DLink Router hacked");
+      System.out.println("DLink Router hacked!");
     }
   }
 

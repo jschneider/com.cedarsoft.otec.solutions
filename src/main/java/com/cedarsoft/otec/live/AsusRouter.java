@@ -9,7 +9,7 @@ public class AsusRouter implements Router {
     System.out.println("sending data <" + data + "> to AsusRouter");
 
     if (data.equals("asus-password")) {
-      System.out.println("Asus Router hacked");
+      System.out.println("Asus Router hacked!");
     }
   }
 
