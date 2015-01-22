@@ -8,4 +8,6 @@ package com.cedarsoft.otec.live;
 public interface Router {
   void sendData(String data);
 
+  void accept(RouterVisitor visitor);
+
 }

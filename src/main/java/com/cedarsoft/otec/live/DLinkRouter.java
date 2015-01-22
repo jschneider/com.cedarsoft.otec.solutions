@@ -8,4 +8,9 @@ public class DLinkRouter implements Router {
   public void sendData(String data) {
     System.out.println("sending data <" + data + "> to DLink Router");
   }
+
+  @Override
+  public void accept(RouterVisitor visitor) {
+    visitor.visit(this);
+  }
 }

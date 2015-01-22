@@ -8,4 +8,9 @@ public class FritzBox implements Router {
   public void sendData(String data) {
     System.out.println("sending data <" + data + "> to Fritz!Box");
   }
+
+  @Override
+  public void accept(RouterVisitor visitor) {
+    visitor.visit(this);
+  }
 }
