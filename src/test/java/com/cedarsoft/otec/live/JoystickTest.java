@@ -20,5 +20,11 @@ public class JoystickTest {
     joystick.buttonXPressed();
     joystick.buttonYXPressed();
 
+
+    System.out.println( "Executed commands" );
+    for ( Command command : joystick.getExecutedCommands() ) {
+      System.out.println( command );
+    }
+
   }
 }

@@ -1,6 +1,7 @@
 package com.cedarsoft.otec.live;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,5 +45,9 @@ public class Joystick {
     System.out.println( "Joystick.buttonYXPressed" );
     yCommand.execute();
     executedCommands.add( yCommand );
+  }
+
+  public List<Command> getExecutedCommands() {
+    return Collections.unmodifiableList( executedCommands );
   }
 }
