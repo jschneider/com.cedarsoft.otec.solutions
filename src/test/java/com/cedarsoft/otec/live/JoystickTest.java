@@ -15,10 +15,10 @@ public class JoystickTest {
       new MoveCommand()
     );
 
-    joystick.buttonAXPressed();
-    joystick.buttonBXPressed();
+    joystick.buttonAPressed();
+    joystick.buttonBPressed();
     joystick.buttonXPressed();
-    joystick.buttonYXPressed();
+    joystick.buttonYPressed();
 
 
     System.out.println( "Executed commands" );
