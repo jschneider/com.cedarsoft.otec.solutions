@@ -24,16 +24,16 @@ public class Joystick {
 
   public void buttonBXPressed() {
     System.out.println( "Joystick.buttonBXPressed" );
-    aCommand.execute();
+    bCommand.execute();
   }
 
   public void buttonXPressed() {
     System.out.println( "Joystick.buttonXPressed" );
-    aCommand.execute();
+    xCommand.execute();
   }
 
   public void buttonYXPressed() {
     System.out.println( "Joystick.buttonYXPressed" );
-    aCommand.execute();
+    yCommand.execute();
   }
 }
