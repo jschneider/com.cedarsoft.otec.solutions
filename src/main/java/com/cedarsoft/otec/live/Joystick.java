@@ -5,19 +5,35 @@ package com.cedarsoft.otec.live;
  * @author Johannes Schneider (<a href="mailto:js@cedarsoft.com">js@cedarsoft.com</a>)
  */
 public class Joystick {
+  private final Command aCommand;
+  private final Command bCommand;
+  private final Command xCommand;
+  private final Command yCommand;
+
+  public Joystick( Command aCommand, Command bCommand, Command xCommand, Command yCommand ) {
+    this.aCommand = aCommand;
+    this.bCommand = bCommand;
+    this.xCommand = xCommand;
+    this.yCommand = yCommand;
+  }
+
   public void buttonAXPressed() {
     System.out.println( "Joystick.buttonAXPressed" );
+    aCommand.execute();
   }
 
   public void buttonBXPressed() {
     System.out.println( "Joystick.buttonBXPressed" );
+    aCommand.execute();
   }
 
   public void buttonXPressed() {
     System.out.println( "Joystick.buttonXPressed" );
+    aCommand.execute();
   }
 
   public void buttonYXPressed() {
     System.out.println( "Joystick.buttonYXPressed" );
+    aCommand.execute();
   }
 }
