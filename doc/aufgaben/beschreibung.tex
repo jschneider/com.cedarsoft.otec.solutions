@@ -10,50 +10,68 @@
 
 \centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
 \vspace{.5pc}
-\centerline{\sc Objekttechnologien - Wintersemester 2014/2015}
+\centerline{\sc Objekttechnologien - Sommersemester 2015}
 \vspace{2pc}
 
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Visitor-Patterns ein \enquote{Hacking-Tool} für
-unterschiedliche Router-Typen erstellt werden:
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Command-Patterns ein Joystick für ein Computer-Spiel simuliert werden:
 
 
 \section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{Interface Router}
+\subsection{Klasse Joystick}
 
-Ein Router enthält die Methode: \emph{void sendData(String data);}
-
-\subsection{Drei Router-Implementierungen}
-Erstellen Sie drei Router-Implementierungen (z.B. benannt nach unterschiedlichen Herstellern). Diese
-implementieren die \emph{\#sendData(String)}-Methode zunächst identisch:
-
-Die übergebenen Daten werden auf der Konsole ausgegeben.
-
-\subsubsection{Sicherheitslücken}
-Jeder der drei Router-Implementierungen erhält nun eine Sicherheitslücke:
-Wenn ein bestimmer (von Ihnen frei gewählter) String an den Router geschickt wird, 
-gilt dieser als gehackt. Dies wird durch eine entsprechende Ausgabe auf der Konsole verdeutlicht.
-
-Erweitern Sie also die Methoden-Implementierungen der drei Router-Klassen und geben Sie jeweils eine entsprechend Ausgabe auf der Konsole
-aus, sofern der herstellerspezifischer String übergeben wird.
+Ein Joystick enthält vier Methoden, die je dem Drücken eines Knopfes entsprechen:
 
 
-\section{Visitor-Pattern}
+\begin{itemize}
+\item buttonAPressed
+\item buttonBPressed
+\item buttonXPressed
+\item buttonYPressed
+\end{itemize}
 
-\subsection{HackingVisitor}
+Jede dieser Methode gibt beim Aufruf eine kurze Ausgabe auf der Konsole aus. Damit ist erkennbar, dass der entsprechende Button gedrückt wurde.
 
-Mit Hilfe des Visitor-Patterns soll nun \emph{HackingVisitor} erstellt werden.
-Dieser Visitor übergibt je nach Hersteller den bestimmten String an die \emph{\#sendData(String)}-Methode und
-hackt somit diesen Router.
+
+\section{Command-Pattern}
+
+\subsection{Command-Interface und Implementierungen}
+
+Erstellen Sie ein Command-Interface und folgende drei Implementierungen:
+
+\begin{itemize}
+\item JumpCommand
+\item MoveCommand
+\item ShootCommand
+\end{itemize}
+
+Jede dieser drei Implementierungen gibt auf der Konsole eine entsprechende Meldung aus, sobald das
+Command ausgeführt wird.
+
+
+\subsection{Verwendung im Joystick}
+In der Joystick-Klasse soll nun jedem Button ein Command zugeordnet werden.
+Dieses Kommand wird dann beim Drücken des Knopfs ausgeführt.
+
+Diese Zuordnung erfolgt von außerhalb der Joystick-Klasse.
+
+In unserem Fall wird dasselbe Kommando bei jedem Drücken des jeweiligen Knopfes ausgeführt. D.h.
+das selbe Kommandos wird bei mehrmaligem Drücken eines Knopfes auch mehrfach ausgeführt.
+
+\subsection{Speichern der ausgeführten Kommandos}
+
+Die Joystick-Klasse merkt sich die ausgeführten Kommandos. Sie stellt diese Liste per Getter zur Verfügung.
+
+Der Test/Main-Klasse gibt nach dem Drücken der Knöpfe die Liste der ausgeführten Kommandos auf der Konsole
+aus.
 
 
 \subsection{Unit-Test / Main-Methode}
-Erstellen Sie einen Unit-Test oder eine Main-Klasse welches das Verhalten des Visitors verdeutlicht.
+Erstellen Sie einen Unit-Test oder eine Main-Klasse welches das Verhalten des Command-Patterns verdeutlicht.
 
 
 
 \end{document}
-
