@@ -10,49 +10,64 @@
 
 \centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
 \vspace{.5pc}
-\centerline{\sc Objekttechnologien - Wintersemester 2014/2015}
+\centerline{\sc Objekttechnologien - Wintersemester 2015/2016}
 \vspace{2pc}
 
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Visitor-Patterns ein \enquote{Hacking-Tool} für
-unterschiedliche Router-Typen erstellt werden:
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Builder-Patterns eine (einfache) Bestellung in einem Fast-Food-Restaurant abgebildet werden.
 
 
 \section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{Interface Router}
+\subsection{Order}
 
-Ein Router enthält die Methode \enquote{void sendData(String data);}.
+Eine Bestellung enthält folgenden Felder mit zugehörigen Getter-Methoden:
 
-\subsection{Drei Router-Implementierungen}
-Erstellen Sie drei Router-Implementierungen (z.B. benannt nach unterschiedlichen Herstellern). Diese
-implementieren die \#sendData(String)-Methode zunächst identisch:
-
-Die übergebenen Daten werden auf der Konsole ausgegeben.
-
-\subsubsection{Sicherheitslücken}
-Jeder der drei Router-Implementierungen erhält nun eine Sicherheitslücke:
-Wenn ein bestimmer (von Ihnen frei gewählter) String an den Router geschickt wird, 
-gilt dieser als gehackt. Dies wird durch eine entsprechende Ausgabe auf der Konsole verdeutlicht.
-
-Erweitern Sie also die Methoden-Implementierungen der drei Router-Klassen und geben Sie jeweils eine entsprechend Ausgabe auf der Konsole
-aus, sofern der herstellerspezifischer String übergeben wird.
+\begin{description}
+  \item[price] Der Gesamt-Preis der Bestellung (ausnahmsweise als einfacher Zahlenwert)
+  \item[burgers] Eine Liste von Strings, welche die bestellten Burger repräsentieren
+  \item[drinks] Eine List von Strings, welche die bestellten Getränke repräsentieren
+\end{description}
 
 
-\section{Visitor-Pattern}
+\section{Builder-Pattern}
 
-\subsection{HackingVisitor}
+\subsection{OrderBuilder}
 
-Mit Hilfe des Visitor-Patterns soll nun \enquote{HackingVisitor} erstellt werden.
-Dieser Visitor übergibt je nach Hersteller den bestimmten String an die sendData(String)-Methode und
-hackt somit diesen Router.
+Mit Hilfe des OrderBuilders soll es möglich sein, bequem eine Bestellung zu erstellen.
+
+Der Builder soll dabei folgende Funktionalitäten abbilden:
+
+\subsubsection{Hinzufügen einzelner Burger}
+Einzelne Burger sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
+
+\subsubsection{Hinzufügen einzelner Drinks}
+Einzelne Drings sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
+
+\subsubsection{Setzen eines Preises}
+Der Gesamt-Preis der Bestellung soll gesetzt werden können.
+
+\subsubsection{Erstellen einer Order}
+Eine Bestellung soll aus den im Builder gespeicherten Werten erzeugt werden. 
+
+Bei der Erzeugung der Order soll automatisch eine Plausibilitäts-Prüfung durchgeführt werden.
+
+\subsubsection{Plausibilitäts-Prüfung}
+Überprüft werden soll dabei folgendes:
+
+\begin{itemize}
+  \item Der Preis muss positiv sein
+  \item Es muss mindestens ein Burger oder ein Drink bestellt werden.
+\end{itemize}
+
 
 
 \subsection{Unit-Test / Main-Methode}
-Erstellen Sie einen Unit-Test oder eine Main-Klasse welches das Verhalten des Visitors verdeutlicht.
+Erstellen Sie (mindestens) einen Unit-Test oder (mindestens) eine Main-Klasse welches das Verhalten des Builders verdeutlicht.
 
+Dabei soll auch die Funktionsfähigkeit der Validierung gezeigt werden.
 
 
 \end{document}
