@@ -11,6 +11,4 @@ public abstract class AbstractPlayerFactory {
   public abstract Jersey createJersey(int number);
 
   public abstract Trunks createTrunk();
-
-  public abstract List<Object> createAccessories();
 }

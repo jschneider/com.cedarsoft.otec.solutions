@@ -1,8 +1,6 @@
 package com.cedarsoft.otec.af;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Creates a goalie
@@ -20,10 +18,4 @@ public class GoalieFactory extends AbstractPlayerFactory {
     return new Trunks(Color.GREEN);
   }
 
-  @Override
-  public List<Object> createAccessories() {
-    List<Object> accessories = new ArrayList<>();
-    accessories.add(new Gloves());
-    return accessories;
-  }
 }

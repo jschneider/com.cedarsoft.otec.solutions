@@ -1,8 +1,6 @@
 package com.cedarsoft.otec.af;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Creates a fielder
@@ -20,8 +18,4 @@ public class FielderFactory extends AbstractPlayerFactory {
     return new Trunks(Color.BLACK);
   }
 
-  @Override
-  public List<Object> createAccessories() {
-    return new ArrayList<>();
-  }
 }
