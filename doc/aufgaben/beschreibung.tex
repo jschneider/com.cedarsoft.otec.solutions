@@ -10,64 +10,54 @@
 
 \centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
 \vspace{.5pc}
-\centerline{\sc Objekttechnologien - Wintersemester 2015/2016}
+\centerline{\sc Objekttechnologien - Sommersemester 2016}
 \vspace{2pc}
-
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Builder-Patterns eine (einfache) Bestellung in einem Fast-Food-Restaurant abgebildet werden.
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Abstract-Factory-Patterns 
+die \enquote{Erzeugung} von Fußball-Spielern abgebildet werden.
 
 
 \section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{Order}
+\subsection{Jersey}
 
-Eine Bestellung enthält folgenden Felder mit zugehörigen Getter-Methoden:
+Eine Trikot enthält folgende Eigenschaften
 
 \begin{description}
-  \item[price] Der Gesamt-Preis der Bestellung (ausnahmsweise als einfacher Zahlenwert)
-  \item[burgers] Eine Liste von Strings, welche die bestellten Burger repräsentieren
-  \item[drinks] Eine List von Strings, welche die bestellten Getränke repräsentieren
+  \item[color] Die Farbe des Trikots (als java.awt.Color oder notfalls als String)
+  \item[number] Die Trikot-Nummer (als int)
+\end{description}
+
+\subsection{JerseyWithPadding}
+Erweitert die Klasse Jersey.
+
+Entspricht einem Trikot mit Polsterung (für einen Torwart).
+Hat im Vergleich zu dem normalen Jersey der Einfachheit halber keine weiteren Felder.
+
+\subsection{Trunks}
+Eine Sporthose enthält folgende Eigenschaft:
+
+\begin{description}
+  \item[color] Die Farbe des Trikots (als java.awt.Color oder notfalls als String)
 \end{description}
 
 
-\section{Builder-Pattern}
+\section{Abstract-Factory-Pattern}
 
-\subsection{OrderBuilder}
+\subsection{AbstractPlayerFactory}
 
-Mit Hilfe des OrderBuilders soll es möglich sein, bequem eine Bestellung zu erstellen.
+Mit Hilfe zweier Implementierungen von AbstractPlayerFactory soll es möglich sein, einen Feldspieler (mit der FielderFactory) bzw.
+einen Torwart (mit der GoalieFactory) zu erzeugen.
 
-Der Builder soll dabei folgende Funktionalitäten abbilden:
+Für jeden Spieler sollen dabei über die jeweilige Factory folgende Dinge erzeugt werden können:
 
-\subsubsection{Hinzufügen einzelner Burger}
-Einzelne Burger sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
+\begin{description}
+  \item[jersey] Ein Trikot: Für Feldspieler in der Farbe weiß, für den Torwart in grün.
+  \item[trunks] Eine Hose: Für Feldspieler in der Farbe schwarz, für den Torwart in grün.
+\end{description}
 
-\subsubsection{Hinzufügen einzelner Drinks}
-Einzelne Drings sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
-
-\subsubsection{Setzen eines Preises}
-Der Gesamt-Preis der Bestellung soll gesetzt werden können.
-
-\subsubsection{Erstellen einer Order}
-Eine Bestellung soll aus den im Builder gespeicherten Werten erzeugt werden. 
-
-Bei der Erzeugung der Order soll automatisch eine Plausibilitäts-Prüfung durchgeführt werden.
-
-\subsubsection{Plausibilitäts-Prüfung}
-Überprüft werden soll dabei folgendes:
-
-\begin{itemize}
-  \item Der Preis muss positiv sein
-  \item Es muss mindestens ein Burger oder ein Drink bestellt werden.
-\end{itemize}
-
-
-
-\subsection{Unit-Test / Main-Methode}
-Erstellen Sie (mindestens) einen Unit-Test oder (mindestens) eine Main-Klasse welches das Verhalten des Builders verdeutlicht.
-
-Dabei soll auch die Funktionsfähigkeit der Validierung gezeigt werden.
 
 
 \end{document}
