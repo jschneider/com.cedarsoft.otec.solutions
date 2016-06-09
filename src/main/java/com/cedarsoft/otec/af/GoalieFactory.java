@@ -14,7 +14,7 @@ public class GoalieFactory extends AbstractPlayerFactory {
   }
 
   @Override
-  public Trunks createTrunk() {
+  public Trunks createTrunks() {
     return new Trunks(Color.GREEN);
   }
 

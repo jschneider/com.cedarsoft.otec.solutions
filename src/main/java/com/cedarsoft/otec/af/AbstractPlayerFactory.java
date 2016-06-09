@@ -10,5 +10,5 @@ import java.util.List;
 public abstract class AbstractPlayerFactory {
   public abstract Jersey createJersey(int number);
 
-  public abstract Trunks createTrunk();
+  public abstract Trunks createTrunks();
 }

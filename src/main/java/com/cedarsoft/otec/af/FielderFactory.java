@@ -14,7 +14,7 @@ public class FielderFactory extends AbstractPlayerFactory {
   }
 
   @Override
-  public Trunks createTrunk() {
+  public Trunks createTrunks() {
     return new Trunks(Color.BLACK);
   }
 
