@@ -2,72 +2,90 @@
 
 \input{/home/johannes/documents/cedarsoft/korrespondenz/vorlagen/tex/common.tex}
 
+\usepackage{listings}
 
 \author{Johannes Schneider}
 
 \begin{document}
 
 
-\centerline{\sc \large Aufgabenbeschreibung Live-Aufgabe}
+\centerline{\textsc{\LARGE Aufgabenbeschreibung Live-Aufgabe}}
+
 \vspace{.5pc}
-\centerline{\sc Objekttechnologien - Wintersemester 2015/2016}
+\centerline{\textsc{\large Objekttechnologien - Sommersemester 2017}}
 \vspace{2pc}
 
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Builder-Patterns eine (einfache) Bestellung in einem Fast-Food-Restaurant abgebildet werden.
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Strategy-Patterns ein (sehr einfacher) Armutsbericht erstellt werden.
 
 
 \section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{Order}
+\subsection{PovertyReportCreator}
 
-Eine Bestellung enthält folgenden Felder mit zugehörigen Getter-Methoden:
+Diese Klasse ist dafür zuständig einen Armutsbericht zu erzeugen.
+Dazu erhält sie folgendes
+Felde mit zugehörigen Getter-Methoden:
 
 \begin{description}
-  \item[price] Der Gesamt-Preis der Bestellung (ausnahmsweise als einfacher Zahlenwert)
-  \item[burgers] Eine Liste von Strings, welche die bestellten Burger repräsentieren
-  \item[drinks] Eine List von Strings, welche die bestellten Getränke repräsentieren
+  \item[incomes] Eine Liste mit Integer-Werten (wahlweise auch \emph{int[]}).
+  Jeder Wert entspricht dem Einkommen eines Teilnehmers der Studie.
+\end{description}
+
+\noindent Außerdem hat sie folgende Methode:
+
+
+\begin{description}
+  \item[double getAverage()] Diese Methode liefert später den nach
+  unterschiedlichen Rechen-Vorschriften ermittelten Mittelwert der
+  Einkommen zurück (s.u.).
 \end{description}
 
 
-\section{Builder-Pattern}
+\section{Strategy-Pattern}
 
-\subsection{OrderBuilder}
+\subsection{CalculationStrategy}
 
-Mit Hilfe des OrderBuilders soll es möglich sein, bequem eine Bestellung zu erstellen.
-
-Der Builder soll dabei folgende Funktionalitäten abbilden:
-
-\subsubsection{Hinzufügen einzelner Burger}
-Einzelne Burger sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
-
-\subsubsection{Hinzufügen einzelner Drinks}
-Einzelne Drings sollen (einzeln) zum OrderBuilder hinzugefügt werden können.
-
-\subsubsection{Setzen eines Preises}
-Der Gesamt-Preis der Bestellung soll gesetzt werden können.
-
-\subsubsection{Erstellen einer Order}
-Eine Bestellung soll aus den im Builder gespeicherten Werten erzeugt werden. 
-
-Bei der Erzeugung der Order soll automatisch eine Plausibilitäts-Prüfung durchgeführt werden.
-
-\subsubsection{Plausibilitäts-Prüfung}
-Überprüft werden soll dabei folgendes:
-
-\begin{itemize}
-  \item Der Preis muss positiv sein
-  \item Es muss mindestens ein Burger oder ein Drink bestellt werden.
-\end{itemize}
+Mit Hilfe der unterschiedlichen Implementierungen des Interfaces \emph{CalculationStrategy}
+kann der Mittelwert der Einkommen auf unterschiedlichem Wege berechnet werden:
 
 
+\subsubsection{Strategie 1: Arithmetisches Mittel}
+Diese Implementierung berechnet das arithmetische Mittel.
 
-\subsection{Unit-Test / Main-Methode}
-Erstellen Sie (mindestens) einen Unit-Test oder (mindestens) eine Main-Klasse welches das Verhalten des Builders verdeutlicht.
+\subsubsection{Strategie 2: Median}
+Diese Implementierung berechnet den Median.
+Es kann davon ausgegangen werden, dass die Einkommen in der Liste bereits sortiert vorliegen.
 
-Dabei soll auch die Funktionsfähigkeit der Validierung gezeigt werden.
+\subsection{Main-Methode / Demo}
+Erstellen Sie eine Main-Klasse welches das Verhalten des Strategy-Patterns verdeutlicht:
+
+\noindent Folgende Schritte sollen dabei erfolgen:
+
+
+\subsubsection{Erzeugen eines PovertyReportCreator}
+
+Mit folgenden Werten:
+
+12.000,
+18.000,
+24.000,
+48.000,
+10.8000
+
+\subsubsection{Zuweisen der Arithmetischen-Mittel-Strategy}
+zum \emph{PovertyReportCreator}
+
+\subsubsection{Berechnung und Ausgabe des Mittel-Wertes}
+mit Hilfe der Methode \emph{PovertyReportCreator\#getAverage()}
+
+\subsubsection{Zuweisen der Median-Strategy}
+zum \emph{PovertyReportCreator}
+
+\subsubsection{Berechnung und Ausgabe des Mittel-Wertes}
+mit Hilfe der Methode \emph{PovertyReportCreator\#getAverage()}
 
 
 \end{document}
