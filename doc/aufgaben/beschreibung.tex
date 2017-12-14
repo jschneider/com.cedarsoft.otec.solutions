@@ -12,80 +12,60 @@
 \centerline{\textsc{\LARGE Aufgabenbeschreibung Live-Aufgabe}}
 
 \vspace{.5pc}
-\centerline{\textsc{\large Objekttechnologien - Sommersemester 2017}}
+\centerline{\textsc{\large Objekttechnologien - Wintersemester 2017/18}}
 \vspace{2pc}
 
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Strategy-Patterns ein (sehr einfacher) Armutsbericht erstellt werden.
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Decorator-Patterns ein (sehr einfacher) Video-Downloader mit Cache-Funktion erstellt werden.
 
 
 \section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{PovertyReportCreator}
+\subsection{DefaultVideoDownloader}
 
-Diese Klasse ist dafür zuständig einen Armutsbericht zu erzeugen.
-Dazu erhält sie folgendes
-Felde mit zugehörigen Getter-Methoden:
+Diese Klasse erlaubt es Videos herunter zu laden. In unserem Fall werden die Videos
+durch einfache Strings repräsentiert.
 
-\begin{description}
-  \item[incomes] Eine Liste mit Integer-Werten (wahlweise auch \emph{int[]}).
-  Jeder Wert entspricht dem Einkommen eines Teilnehmers der Studie.
-\end{description}
+Dazu erhält sie folgende Methode:
 
-\noindent Außerdem hat sie folgende Methode:
+\subsubsection{\emph{String downloadVideo(int videoId)}}
 
+Diese Methode liefert ein \enquote{Video} in Form eines kurzen Strings zurück. Für jede
+unterschiedliche Video-Id wird ein entsprechend unterschiedlicher String zurück
+gegeben.
 
-\begin{description}
-  \item[double getAverage()] Diese Methode liefert später den nach
-  unterschiedlichen Rechen-Vorschriften ermittelten Mittelwert der
-  Einkommen zurück (s.u.).
-\end{description}
+So wird z.B. für die \emph{videoId} 7 folgender String zurück gegeben werden: \enquote{Video-Content für ID 7}.
 
 
-\section{Strategy-Pattern}
+\section{Decorator-Pattern}
 
-\subsection{CalculationStrategy}
-
-Mit Hilfe der unterschiedlichen Implementierungen des Interfaces \emph{CalculationStrategy}
-kann der Mittelwert der Einkommen auf unterschiedlichem Wege berechnet werden:
+\subsection{Interface VideoDownloader}
+Erstellen Sie für die erzeugte Klasse und deren Methode ein Interface mit dem Namen \emph{VideoDownloader}
 
 
-\subsubsection{Strategie 1: Arithmetisches Mittel}
-Diese Implementierung berechnet das arithmetische Mittel.
+\subsection{VideoCache}
+Erstellen Sie eine Klasse \emph{VideoCache} die als Decorator für \emph{VideoDownloader} dient.
 
-\subsubsection{Strategie 2: Median}
-Diese Implementierung berechnet den Median.
-Es kann davon ausgegangen werden, dass die Einkommen in der Liste bereits sortiert vorliegen.
+Dieser Decorator speichert für die jeweils letzte Anfrage die Video-ID sowie den Video-String.
+Wenn in direkter Folge eine Anfrage zur selben Video-ID erfolgt, soll der gespeicherte Video-String zurück geliefert werden.
 
-\subsection{Main-Methode / Demo}
-Erstellen Sie eine Main-Klasse welches das Verhalten des Strategy-Patterns verdeutlicht:
+\newpage
+\noindent
+Nochmals zur Verdeutlichung:
 
-\noindent Folgende Schritte sollen dabei erfolgen:
+\subsubsection{Fall 1: Kein oder falsches Video gespeichert}
+Dann wird das dekorierte Objekt nach dem Video gefragt. Dieses Video sowie die zugehörige Video-ID wird im Dekorator
+als Field gespeichert.
+
+\subsubsection{Fall 2: Selbe Video-ID wird ein zweites mal angefragt}
+Erfolgt eine Anfrage mit einer Video-ID, die der aktuell gespeicherten Video-ID entspricht,
+wird das gespeicherte Video direkt zurück geliefert. Das dekorierte Objekt wird dabei nicht angefragt.
 
 
-\subsubsection{Erzeugen eines PovertyReportCreator}
-
-Mit folgenden Werten:
-
-12.000,
-18.000,
-24.000,
-48.000,
-108.000
-
-\subsubsection{Zuweisen der Arithmetischen-Mittel-Strategy}
-zum \emph{PovertyReportCreator}
-
-\subsubsection{Berechnung und Ausgabe des Mittel-Wertes}
-mit Hilfe der Methode \emph{PovertyReportCreator\#getAverage()}
-
-\subsubsection{Zuweisen der Median-Strategy}
-zum \emph{PovertyReportCreator}
-
-\subsubsection{Berechnung und Ausgabe des Mittel-Wertes}
-mit Hilfe der Methode \emph{PovertyReportCreator\#getAverage()}
+\subsection{Test / Main-Klasse}
+Erzeugen Sie ein Demo-Programm oder einen JUnit-Test, welcher die Funktionsfähigkeit und Korrektheit Ihrer Lösung demonstriert.
 
 
 \end{document}
