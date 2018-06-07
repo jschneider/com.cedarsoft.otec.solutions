@@ -12,56 +12,140 @@
 \centerline{\textsc{\LARGE Aufgabenbeschreibung Live-Aufgabe}}
 
 \vspace{.5pc}
-\centerline{\textsc{\large Objekttechnologien - Wintersemester 2017/18}}
+\centerline{\textsc{\large Objekttechnologien - Sommersemeter 20118}}
 \vspace{2pc}
 
 
 
 \section{Grundlegendes}
 
-Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Decorator-Patterns ein (sehr einfacher) Video-Downloader mit Cache-Funktion erstellt werden.
+Im Rahmen dieser Live-Aufgabe soll mit Hilfe des Decorator-Patterns eine Variante des Spiels \enquote{FizzBuzz} nachprogrammiert werden.
 
 
-\section{Erstellen Sie folgende Klassen/Interfaces}
-\subsection{DefaultVideoDownloader}
+\section{Erstellen Sie folgende Klasse}
 
-Diese Klasse erlaubt es Videos herunter zu laden. In unserem Fall werden die Videos
-durch einfache Strings repräsentiert.
+\subsection{DefaultCounter}
 
-Dazu erhält sie folgende Methode:
+Diese Klasse besitzt eine Methode:
 
-\subsubsection{\emph{String downloadVideo(int videoId)}}
+\subsubsection{\emph{int nextValue()}}
 
-Diese Methode liefert ein \enquote{Video} in Form eines kurzen Strings zurück. Für jede
-unterschiedliche Video-Id wird ein entsprechend unterschiedlicher String zurück
-gegeben.
+Diese Methode liefert bei  jedem Aufruf
+einen um 1 erhöhten Wert zurück.
 
-So wird z.B. für die \emph{videoId} 7 folgender String zurück gegeben werden: \enquote{Video-Content für ID 7}.
 
 
 \section{Decorator-Pattern}
 
-\subsection{Interface VideoDownloader}
-Erstellen Sie für die erzeugte Klasse und deren Methode ein Interface mit dem Namen \emph{VideoDownloader}
+\subsection{Counter}
+
+Erstellen Sie für die erzeugte Klasse und deren Methode ein Interface mit dem Namen \emph{Counter}
 
 
-\subsection{VideoCache}
-Erstellen Sie eine Klasse \emph{VideoCache} die als Decorator für \emph{VideoDownloader} dient.
+\subsection{Mod3Decorator}
+Erstellen Sie eine Klasse \emph{Mod3Decorator}, die als Decorator für \emph{Counter} dient.
 
-Dieser Decorator speichert für die jeweils letzte Anfrage die Video-ID sowie den Video-String.
-Wenn in direkter Folge eine Anfrage zur selben Video-ID erfolgt, soll der gespeicherte Video-String zurück geliefert werden.
+Dieser Decorator zeigt folgendes Verhalten:
 
-\newpage
+\begin{itemize}
+\item Wenn der vom dekorierten Objekt zurück gelieferte Wert durch \emph{3} teilbar ist, wird ein Text auf der Konsole ausgegeben.
+\item Andernfalls erfolgt keine Ausgabe.
+\end{itemize}
+
+ Der Wert wird immer unverändert zurück gegeben.
+
+
+\subsection{Mod4Decorator}
+Erstellen Sie eine Klasse \emph{Mod4Decorator}, die als Decorator für \emph{Counter} dient.
+
+Dieser Decorator zeigt folgendes Verhalten:
+
+\begin{itemize}
+\item Wenn der vom dekorierten Objekt zurück gelieferte Wert durch \emph{4} teilbar ist, wird ein Text auf der Konsole ausgegeben.
+\item Andernfalls erfolgt keine Ausgabe.
+\end{itemize}
+
+Der Wert wird immer unverändert zurück gegeben.
+
+
+
+\subsection{Mod3And4Decorator}
+Erstellen Sie eine Klasse \emph{Mod3And4Decorator}, die als Decorator für \emph{Counter} dient.
+
+Dieser Decorator ändert die von \emph{int nextValue()} zurück gelieferten Werte nach
+folgendem Schema ab:
+
+\begin{itemize}
+\item Wenn der vom dekorierten Objekt zurück gelieferte Wert durch \emph{3} und \emph{4} teilbar ist, wird \emph{-1} zurück gegeben.
+\item Andernfalls wird der Wert unverändert zurück gegeben.
+\end{itemize}
+
+
+\subsection{Ausgabe}
+Fügen Sie die einzelnen Decorator in sinnvoller Weise so zusammen, rufen Sie die Methode \emph{nextValue()}
+24 mal auf und geben Sie den zurück gelieferten Wert auf der Konsole aus.
+
+Dabei soll folgende Ausgabe entstehen:
+
+\begin{lstlisting}[language=java]
+1
+2
+3 ist durch 3 teilbar
+3
+4 ist durch 4 teilbar
+4
+5
+6 ist durch 3 teilbar
+6
+7
+8 ist durch 4 teilbar
+8
+9 ist durch 3 teilbar
+9
+10
+11
+12 ist durch 3 teilbar
+12 ist durch 4 teilbar
+-1
+13
+14
+15 ist durch 3 teilbar
+15
+16 ist durch 4 teilbar
+16
+17
+18 ist durch 3 teilbar
+18
+19
+20 ist durch 4 teilbar
+20
+21 ist durch 3 teilbar
+21
+22
+23
+24 ist durch 3 teilbar
+24 ist durch 4 teilbar
+-1
+\end{lstlisting}
+
+
+
+
+
+\section{Zur Klarstellung}
+
+\subsection{Modulo}
+Um festzustellen, ob eine Zahl durch eine bestimmte Zahl teilbar ist, bietet sich der Modulo-Operator (\emph{\%}) an.
+
+
 \noindent
-Nochmals zur Verdeutlichung:
+Beispiel:
 
-\subsubsection{Fall 1: Kein oder falsches Video gespeichert}
-Dann wird das dekorierte Objekt nach dem Video gefragt. Dieses Video sowie die zugehörige Video-ID wird im Dekorator
-als Field gespeichert.
-
-\subsubsection{Fall 2: Selbe Video-ID wird ein zweites mal angefragt}
-Erfolgt eine Anfrage mit einer Video-ID, die der aktuell gespeicherten Video-ID entspricht,
-wird das gespeicherte Video direkt zurück geliefert. Das dekorierte Objekt wird dabei nicht angefragt.
+\begin{lstlisting}[language=java]
+if (value % 17 ==0 ){
+  //Value ist durch 17 teilbar
+}
+\end{lstlisting}
 
 
 \subsection{Test / Main-Klasse}
